@@ -10,12 +10,16 @@ function App() {
     setInputText(value);
   };
 
+  const handleClick = () => {
+    localStorage.setItem(inputText, inputText);
+  };
+
   return (
     <div>
       <h1>TODO 앱</h1>
       <div>
         <input type="text" value={inputText} onChange={handleInput} />
-        <button>add</button>
+        <button onClick={handleClick}>add</button>
       </div>
     </div>
   );
