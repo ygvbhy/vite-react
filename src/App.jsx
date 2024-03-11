@@ -22,6 +22,11 @@ function App() {
 
   const handleClick = () => {
     localStorage.setItem(inputText, inputText);
+    setInputText("");
+  };
+
+  const handleRemove = (index, todo) => {
+    todos.splice(index, 1);
   };
 
   return (
@@ -34,7 +39,14 @@ function App() {
       <div>
         <ul>
           {todos.map((todo, index) => {
-            return <li key={index}>{todo}</li>;
+            return (
+              <li key={index}>
+                <span>{todo}</span>
+                <button onClick={() => handleRemove(index, todo)}>
+                  remove
+                </button>
+              </li>
+            );
           })}
         </ul>
       </div>
