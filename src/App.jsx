@@ -33,9 +33,9 @@ function App() {
       </div>
       <div>
         <ul>
-          <li>할일 추가</li>
-          <li>할일 조회</li>
-          <li>할일 삭제</li>
+          {todos.map((todo, index) => {
+            return <li key={index}>{todo}</li>;
+          })}
         </ul>
       </div>
     </div>
