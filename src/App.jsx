@@ -22,10 +22,17 @@ function App() {
     localStorage.removeItem(todo);
   };
 
+  const addTodo = (todo) => {
+    localStorage.setItem(todo, todo);
+    setTodos((currentTodos) => {
+      return [...currentTodos, todo];
+    });
+  };
+
   return (
     <div>
       <TodoHeader />
-      <TodoInput />
+      <TodoInput onTodoAdd={addTodo} />
       <TodoList todos={todos} onTodoRemove={handleRemove} />
     </div>
   );
