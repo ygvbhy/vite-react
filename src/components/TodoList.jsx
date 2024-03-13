@@ -1,10 +1,4 @@
-function TodoList({ todos }) {
-  const handleRemove = (todo) => {
-    const result = todos.filter((todoItem) => todoItem !== todo);
-    setTodos(result);
-    localStorage.removeItem(todo);
-  };
-
+function TodoList({ todos, onTodoRemove }) {
   return (
     <div>
       <ul>
@@ -12,7 +6,7 @@ function TodoList({ todos }) {
           return (
             <li key={index}>
               <span>{todo}</span>
-              <button onClick={() => handleRemove(todo)}>remove</button>
+              <button onClick={() => onTodoRemove(todo)}>remove</button>
             </li>
           );
         })}
