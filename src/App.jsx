@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import TodoHeader from "./components/TodoHeader";
+import TodoInput from "./components/TodoInput";
 
 function fetchTodos() {
   const result = [];
@@ -12,25 +13,23 @@ function fetchTodos() {
 }
 
 function App() {
-  // const [count, setCount] = useState(0);
-  const [inputText, setInputText] = useState("");
-  // const todos = fetchTodos();
+  // const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState(fetchTodos());
 
-  const handleInput = (event) => {
-    const value = event.target.value;
-    setInputText(value);
-  };
+  // const handleInput = (event) => {
+  //   const value = event.target.value;
+  //   setInputText(value);
+  // };
 
-  const handleClick = () => {
-    localStorage.setItem(inputText, inputText);
-    setTodos((currentTodos) => {
-      return [...currentTodos, inputText];
-    });
-    setInputText("");
-  };
+  // const handleClick = () => {
+  //   localStorage.setItem(inputText, inputText);
+  //   setTodos((currentTodos) => {
+  //     return [...currentTodos, inputText];
+  //   });
+  //   setInputText("");
+  // };
 
-  const handleRemove = (index, todo) => {
+  const handleRemove = (todo) => {
     const result = todos.filter((todoItem) => todoItem !== todo);
     setTodos(result);
     localStorage.removeItem(todo);
@@ -38,20 +37,19 @@ function App() {
 
   return (
     <div>
-      <TodoHeader></TodoHeader>
-      <div>
+      <TodoHeader />
+      {/* <div>
         <input type="text" value={inputText} onChange={handleInput} />
         <button onClick={handleClick}>add</button>
-      </div>
+      </div> */}
+      <TodoInput />
       <div>
         <ul>
           {todos.map((todo, index) => {
             return (
               <li key={index}>
                 <span>{todo}</span>
-                <button onClick={() => handleRemove(index, todo)}>
-                  remove
-                </button>
+                <button onClick={() => handleRemove(todo)}>remove</button>
               </li>
             );
           })}
