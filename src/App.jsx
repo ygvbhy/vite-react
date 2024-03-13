@@ -16,7 +16,7 @@ function fetchTodos() {
 function App() {
   const [todos, setTodos] = useState(fetchTodos());
 
-  const handleRemove = (todo) => {
+  const removeTodo = (todo) => {
     const result = todos.filter((todoItem) => todoItem !== todo);
     setTodos(result);
     localStorage.removeItem(todo);
@@ -33,7 +33,7 @@ function App() {
     <div>
       <TodoHeader />
       <TodoInput onTodoAdd={addTodo} />
-      <TodoList todos={todos} onTodoRemove={handleRemove} />
+      <TodoList todos={todos} onTodoRemove={removeTodo} />
     </div>
   );
 }
