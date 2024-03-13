@@ -8,17 +8,14 @@ function TodoList({ todos }) {
   return (
     <div>
       <ul>
-        {
-          // eslint-disable-next-line react/prop-types
-          todos.map((todo, index) => {
-            return (
-              <li key={index}>
-                <span>{todo}</span>
-                <button onClick={() => handleRemove(todo)}>remove</button>
-              </li>
-            );
-          })
-        }
+        {todos.map((todo, index) => {
+          return (
+            <li key={index}>
+              <span>{todo}</span>
+              <button onClick={() => handleRemove(todo)}>remove</button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
